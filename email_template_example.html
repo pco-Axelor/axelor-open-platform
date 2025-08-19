@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template de Mail</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        
+        <h1 style="color: #2c3e50;">Bonjour ${firstName} ${lastName},</h1>
+        
+        <p>Voici votre lien de confirmation :</p>
+        
+        <!-- Méthode 1: Utilisation d'entités HTML pour échapper les guillemets -->
+        <p>
+            <a href="https://example.com/confirm?token=${token}&amp;user=${userId}" 
+               style="background-color: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">
+                Confirmer mon compte
+            </a>
+        </p>
+        
+        <!-- Méthode 2: Utilisation de guillemets simples à l'extérieur -->
+        <p>
+            <a href='https://example.com/reset?email=${userEmail}&amp;token=${resetToken}' 
+               style="color: #e74c3c; text-decoration: underline;">
+                Réinitialiser mon mot de passe
+            </a>
+        </p>
+        
+        <!-- Méthode 3: Échappement avec des entités HTML dans l'URL -->
+        <p>
+            <a href="https://example.com/profile?name=${userName}&amp;action=view&amp;id=${userId}" 
+               style="color: #27ae60; text-decoration: none;">
+                Voir mon profil
+            </a>
+        </p>
+        
+        <!-- Méthode 4: Pour les URLs complexes avec des paramètres -->
+        <p>
+            <a href="https://example.com/activate?user=${userId}&amp;token=${activationToken}&amp;expires=${expiryDate}&amp;redirect=${redirectUrl}" 
+               style="background-color: #2ecc71; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px;">
+                Activer mon compte
+            </a>
+        </p>
+        
+        <!-- Méthode 5: Utilisation de variables avec échappement dans le template -->
+        <p>
+            <a href="${baseUrl}/dashboard?session=${sessionId}&amp;lang=${language}" 
+               style="color: #9b59b6; text-decoration: underline;">
+                Accéder au tableau de bord
+            </a>
+        </p>
+        
+        <hr style="border: none; border-top: 1px solid #ecf0f1; margin: 30px 0;">
+        
+        <p style="font-size: 14px; color: #7f8c8d;">
+            Si vous ne pouvez pas cliquer sur les liens, copiez et collez cette URL dans votre navigateur :<br>
+            <span style="word-break: break-all;">${fullUrl}</span>
+        </p>
+        
+        <p style="font-size: 12px; color: #95a5a6;">
+            Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+        </p>
+        
+    </div>
+    
+</body>
+</html>
